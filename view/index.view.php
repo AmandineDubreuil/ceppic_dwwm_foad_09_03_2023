@@ -27,6 +27,8 @@ require_once './partials/head.php';
         <th>Date modification</th>
         <th>Date création</th>
         <th>Affiche</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
     </thead>
     <tbody>
 
@@ -49,6 +51,8 @@ require_once './partials/head.php';
                 <td class="modified"><?= $value["modified"] ?></td>
                 <td class="created"><?= $value["created"] ?></td>
                 <td class="poster_flag"><?= $value["poster_flag"] ?></td>
+                <td><a href="./edit.php">Editer</a></td>
+                <td><a href="./supp.php">Supprimer</a></td>
 
             </tr>
         <?php endforeach; ?>
