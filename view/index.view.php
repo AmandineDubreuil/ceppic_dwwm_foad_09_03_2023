@@ -4,7 +4,7 @@ require_once './inc/pdo.php';
 require_once './partials/head.php';
 
 
-
+//selectFilm(4239);
 
 
 ?>
@@ -31,7 +31,6 @@ require_once './partials/head.php';
         <th>Supprimer</th>
     </thead>
     <tbody>
-
         <?php
         foreach (getderniersFilms(10) as $film => $value) :
         ?><tr>
@@ -52,12 +51,9 @@ require_once './partials/head.php';
                 <td class="created"><?= $value["created"] ?></td>
                 <td class="poster_flag"><?= $value["poster_flag"] ?></td>
                 <td><a href="./edit.php">Editer</a></td>
-                <td><a href="./supp.php">Supprimer</a></td>
-
+                <td><a href="./supp.php?id=<?=$value["id"]?>">Supprimer</a></td>
             </tr>
         <?php endforeach; ?>
-
-
     </tbody>
 </table>
 <?php

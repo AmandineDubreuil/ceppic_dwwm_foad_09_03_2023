@@ -22,12 +22,33 @@ function dd($valeur)
  * fonctions sur BDD Movies_full
  * ************* */
 
- function getderniersFilms($limite){
+ function getderniersFilms($nombre){
 
     global $conn;
-    $sqlRequete = "SELECT * FROM `movies_full` ORDER BY created DESC LIMIT :limite";
+    $sqlRequete = "SELECT * FROM `movies_full` ORDER BY created DESC LIMIT :nombre";
     $resultat = $conn ->prepare($sqlRequete);
-    $resultat ->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $resultat ->bindValue(':nombre', $nombre, PDO::PARAM_INT);
     $resultat -> execute();
     return $resultat-> fetchAll();
  }
+
+ function selectFilm($idFilm){
+    global $conn;
+    $sqlRequete = "SELECT * FROM `movies_full` WHERE id = :idFilm";
+    $resultat = $conn ->prepare($sqlRequete);
+    $resultat ->bindValue(':idFilm', $idFilm, PDO::PARAM_INT);
+    $resultat -> execute();
+    return $resultat-> fetchAll();
+
+ }
+
+ function suppFilm($idFilm){
+    global $conn;
+    $sqlRequete = "DELETE FROM `movies_full` WHERE id = :idFilm";
+    $resultat = $conn ->prepare($sqlRequete);
+    $resultat ->bindValue(':idFilm', $idFilm, PDO::PARAM_INT);
+    $resultat -> execute();
+
+    header('location: http://localhost/FOAD/20230309_SQL_ModifFilms/ceppic_dwwm_foad_09_03_2023/');
+ }
+
