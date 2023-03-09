@@ -80,6 +80,20 @@ function addFilm($slug, $title, $year, $genres, $plot, $directors, $cast, $write
     header('location: http://localhost/FOAD/20230309_SQL_ModifFilms/ceppic_dwwm_foad_09_03_2023/');
 }
 
+
+function editStrFilm($idFilm, $key, $modification){
+    global $conn;
+$sqlRequete = "UPDATE `movies_full` SET $key = :modification, modified = now() WHERE id = :idFilm";
+
+$resultat = $conn->prepare($sqlRequete);
+$resultat->bindValue(':idFilm', $idFilm, PDO::PARAM_INT);
+$resultat->bindValue(':modification', $modification, PDO::ATTR_DEFAULT_STR_PARAM);
+$resultat->execute();
+
+}
+
+
+
 /***********************
  * formulaire // nettoyage des données
  ************************* */

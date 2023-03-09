@@ -50,7 +50,7 @@ require_once './partials/head.php';
                 <td class="modified"><?= $value["modified"] ?></td>
                 <td class="created"><?= $value["created"] ?></td>
                 <td class="poster_flag"><?= $value["poster_flag"] ?></td>
-                <td><a href="./edit.php">Editer</a></td>
+                <td><a href="./edit.php?id=<?=$value["id"]?>&slug=<?=$value["slug"]?>&title=<?=$value["title"]?>&year=<?=$value["year"]?>&genres=<?=$value["genres"]?>&plot=<?=$value["plot"]?>&directors=<?=$value["directors"]?>&cast=<?=$value["cast"]?>&writers=<?=$value["writers"]?>&runtime=<?=$value["runtime"]?>&mpaa=<?=$value["mpaa"]?>&rating=<?=$value["rating"]?>&popularity=<?=$value["popularity"]?>&poster_flag=<?=$value["poster_flag"]?>">Editer</a></td>
                 <td><a href="./supp.php?id=<?=$value["id"]?>">Supprimer</a></td>
             </tr>
         <?php endforeach; ?>
