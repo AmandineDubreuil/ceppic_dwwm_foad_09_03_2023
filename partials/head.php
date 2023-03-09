@@ -15,6 +15,7 @@
     <header class="header">
         <h1>Films</h1>
         <ul>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="ajout.php">Ajouter un film</a></li>
         </ul>
     </header>

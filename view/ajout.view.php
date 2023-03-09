@@ -3,9 +3,43 @@ require_once './inc/fonctions.php';
 require_once './inc/pdo.php';
 require_once './partials/head.php';
 
+$error = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+
+
+    foreach ($_POST as $key => $value) :
+        $_POST[$key] = checkXSSPostValue($value);
+        if ($key === 'title') :
+            $error = checkEmptyValue($value, $key, $error);
+        endif;
+    endforeach;
+    $slug = $_POST['slug'];
+    $title = $_POST['title'];
+    $year = $_POST['year'];
+    $genres = $_POST['genres'];
+    $plot = $_POST['plot'];
+    $directors = $_POST['directors'];
+    $cast = $_POST['cast'];
+    $writers = $_POST['writers'];
+    $runtime = $_POST['runtime'];
+    $mpaa = $_POST['mpaa'];
+    $rating = $_POST['rating'];
+    $popularity = $_POST['popularity'];
+    $poster_flag = $_POST['poster_flag'];
+
+
+
+    if (empty($error)) :
+        addFilm($slug, $title, $year, $genres, $plot, $directors, $cast, $writers, $runtime, $mpaa, $rating, $popularity, $poster_flag);
+    endif;
+
+endif;
 ?>
 
-<form class="enregistrement" action="" method="post"></form>
+
+
+<form class="enregistrement" action="" method="post">
 
 <div>
     <label for="slug">Slug</label>
@@ -73,11 +107,9 @@ require_once './partials/head.php';
     <input type="text" name="poster_flag" id="poster_flag">
 </div>
 
-
-
+<!-- submit -->
 <input type="submit" value="Enregistrement">
 </form>
-
 
 <?php
 
