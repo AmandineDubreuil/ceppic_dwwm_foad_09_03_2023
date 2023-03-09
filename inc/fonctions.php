@@ -1,6 +1,6 @@
 <?php
 
-//echo 'test';
+// echo 'test';
 
 function dbug($valeur)
 {
@@ -17,3 +17,17 @@ function dd($valeur)
     echo "</pre>";
     die();
 }
+
+/****************
+ * fonctions sur BDD Movies_full
+ * ************* */
+
+ function getderniersFilms($limite){
+
+    global $conn;
+    $sqlRequete = "SELECT * FROM `movies_full` ORDER BY created DESC LIMIT :limite";
+    $resultat = $conn ->prepare($sqlRequete);
+    $resultat ->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $resultat -> execute();
+    return $resultat-> fetchAll();
+ }
